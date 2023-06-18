@@ -20,11 +20,10 @@ class _TwolistviiewsDialogState extends State<TwolistviiewsDialog> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> filteredProducts = widget.productData.keys
-        .where((productName) => productName.toLowerCase().contains(searchQuery.toLowerCase()))
-        .toList();
-
+    List<String> filteredProducts = widget.productData.keys.where((productName) => productName.toLowerCase().contains(searchQuery.toLowerCase())).toList();
+    double edgepad = 20;
     return Dialog(
+      insetPadding: EdgeInsets.only(left: edgepad, right: edgepad),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +70,7 @@ class _TwolistviiewsDialogState extends State<TwolistviiewsDialog> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(productName),
-                                Text('Number of types: ${types.length}'),
+                                Text('Types: ${types.length}'),
                               ],
                             ),
                           ),
@@ -254,6 +253,7 @@ class _TwolistviiewsDialogState extends State<TwolistviiewsDialog> {
                 child: ElevatedButton(
                   onPressed: () {},
                   child: Container(
+                    alignment: Alignment.center,
                     padding: EdgeInsets.all(5),
                     width: double.infinity,
                     child: Text('Add Item'),
