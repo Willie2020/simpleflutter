@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 class TwolistviiewsDialog extends StatefulWidget {
   final Map<String, List<String>> productData;
   final Map<String, Map<String, double>> productPrices;
+  //final Function() onAddItem; // New property
+  final Function(String, String, int, double) onAddItem;
 
-  TwolistviiewsDialog({required this.productData, required this.productPrices});
+  TwolistviiewsDialog({
+    required this.productData,
+    required this.productPrices,
+    required this.onAddItem, // Pass the callback function
+  });
 
   @override
   _TwolistviiewsDialogState createState() => _TwolistviiewsDialogState();
@@ -251,7 +257,16 @@ class _TwolistviiewsDialogState extends State<TwolistviiewsDialog> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    widget.onAddItem(
+                      selectedProductName,
+                      selectedProductType,
+                      quantity,
+                      calculateTotalCost(),
+                   
+                    );
+                  },
+                  // Call the callback function
                   child: Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(5),
