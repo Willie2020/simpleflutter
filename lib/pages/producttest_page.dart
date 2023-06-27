@@ -14,7 +14,7 @@ class _ProductTestPageState extends State<ProductTestPage> {
   double selectedTotal = 0.0;
 
   void handleAddItem(String productName, String productType, int quantity, double total) {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         // Update the selected values with the values from the dialog
         selectedItem = productName;
